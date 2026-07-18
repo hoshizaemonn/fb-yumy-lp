@@ -8,15 +8,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- GTM: モックアップのため無効化（コンテナID未確定・誤計測防止）
- Google Tag Manager 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
- End Google Tag Manager 
--->
+<!-- GTM: モックアップのため無効化（コンテナID未確定・誤計測防止） -->
 <meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <script>document.documentElement.className+=' js';</script>
@@ -379,6 +371,14 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
 @media (max-width:380px){
   .hero h1{font-size:25px;line-height:1.55}
 }
+
+/* ===== ヒーロー画像（2026/07/19 実装）===== */
+.hv-figure{margin:0}
+.hv-figure img{width:100%;height:auto;display:block;border-radius:8px;
+  border:1px solid var(--line);background:var(--concrete)}
+.hv-figure figcaption{margin-top:10px;font-size:12.5px;color:var(--stone);
+  text-align:center;line-height:1.7}
+.hv-note{font-size:11.5px;color:var(--stone2)}
 </style>
 </head>
 <body>
@@ -387,7 +387,7 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
   ⚠️ これは<strong>制作中のモックアップ</strong>です。実際のサービスサイトではありません（福岡ビルド株式会社様 確認用／制作：斗）。
   <span style="opacity:.85">掲載の電話番号・住所・写真は確認中のため、内容が変更される場合があります。</span>
 </div>
-<!-- GTM noscript: モックアップのため無効化 -->
+<!-- GTM noscript: 無効化 -->
 
 <!-- ================= HEADER ================= -->
 <header>
@@ -441,7 +441,15 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
       </div>
       <div class="hero-visual rv">
         <div class="hv-card">
-          <div class="ph">ユーミーマンション外観イメージ<br>（全国ブランドの参考写真）</div>
+          <figure class="hv-figure">
+            <img src="img/hero-exterior_mock.jpg"
+                 alt="RC賃貸マンションの外観イメージ"
+                 width="598" height="435" loading="eager" decoding="async">
+            <figcaption>
+              外観イメージ<br>
+              <span class="hv-note">※AI生成のイメージ画像です。公開時にユーミーマンションの実写へ差し替えます</span>
+            </figcaption>
+          </figure>
           <div class="hv-badges">
             <span class="hv-badge">ユーミーマンション正規事業者</span>
             <span class="hv-badge">グループに一級建築士事務所</span>
