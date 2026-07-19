@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ユーミーマンション事業部 LP｜デザイン A案・B案 比較</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#123E7C;--paper:#F5F8FC;--line:#D3DEEA;--stone:#5C6672;--accent:#0E5FA8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%}
+
+.mockbar{background:#7A1020;color:#fff;font-size:13px;font-weight:600;line-height:1.6;
+  padding:9px 16px;text-align:center}
+.mockbar span{opacity:.85;font-weight:400}
+
+header{background:#fff;border-bottom:1px solid var(--line);padding:22px 20px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-family:"Shippori Mincho",serif;font-size:clamp(19px,3.4vw,26px);line-height:1.5}
+.sub{font-size:13px;color:var(--stone);margin-top:6px}
+
+/* 切替タブ */
+.tabs{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px rgba(18,62,124,.06)}
+.tabs .wrap{display:flex;gap:8px;padding:10px 20px;align-items:center;flex-wrap:wrap}
+.tab{flex:1;min-width:120px;padding:13px 10px;border:1.5px solid var(--line);border-radius:8px;
+  background:#fff;color:var(--ink);font-size:14px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:.15s}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tab small{display:block;font-size:11px;font-weight:400;opacity:.75;margin-top:3px}
+
+/* 比較モード */
+.mode{display:flex;gap:6px;margin-left:auto}
+.mode button{padding:9px 14px;border:1.5px solid var(--line);border-radius:7px;background:#fff;
+  color:var(--stone);font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.mode button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+main{padding:22px 20px 60px}
+.stage{display:flex;gap:18px;align-items:flex-start}
+.panel{flex:1;min-width:0}
+.panel.hide{display:none}
+.plabel{font-family:"Shippori Mincho",serif;font-size:15px;font-weight:700;margin-bottom:10px;
+  padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;
+  align-items:baseline;gap:10px}
+.plabel em{font-style:normal;font-size:12px;color:var(--stone);font-family:"Noto Sans JP",sans-serif;font-weight:400}
+.panel img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px;background:#fff}
+
+.notes{max-width:1180px;margin:34px auto 0;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:24px}
+.notes h2{font-family:"Shippori Mincho",serif;font-size:17px;margin-bottom:14px}
+.notes table{width:100%;border-collapse:collapse;font-size:13.5px}
+.notes th,.notes td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.notes th{width:30%;color:var(--stone);font-weight:500}
+.notes .q{background:#E7F1FB;border-left:3px solid var(--accent);padding:14px 16px;
+  border-radius:6px;margin-top:16px;font-size:13.5px;line-height:1.85}
+footer{text-align:center;padding:26px 20px 40px;font-size:12px;color:var(--stone)}
+
+@media(max-width:900px){
+  .stage{flex-direction:column}
+  .mode{width:100%;margin-left:0}
+  .mode button{flex:1}
+}
+</style>
+</head>
+<body>
+
+<div class="mockbar">
+  ⚠️ これは<strong>制作中のデザイン確認用ページ</strong>です。実際のサービスサイトではありません（福岡ビルド株式会社様 確認用／制作：斗）。
+  <span>掲載の電話番号・住所・写真は確認中のため、内容が変更される場合があります。</span>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1>ユーミーマンション事業部 LP｜デザイン A案・B案 比較</h1>
+    <p class="sub">福岡ビルド株式会社　ユーミーマンション事業部　／　2026年7月19日時点</p>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="wrap">
+    <button class="tab on" data-view="a">A案<small>白基調・明朝</small></button>
+    <button class="tab" data-view="b">B案<small>写真主体</small></button>
+    <div class="mode">
+      <button data-mode="single" class="on">1案ずつ</button>
+      <button data-mode="both">並べて見る</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="stage wrap" id="stage">
+    <div class="panel" data-panel="a">
+      <div class="plabel">A案｜白基調・明朝 <em>クライアント自作HTMLの方向を清書</em></div>
+      <img src="a.jpg" alt="A案 フルページカンプ" loading="lazy">
+    </div>
+    <div class="panel hide" data-panel="b">
+      <div class="plabel">B案｜写真主体・全面ビジュアル <em>写真で情緒と格を出す方向</em></div>
+      <img src="b.jpg" alt="B案 フルページカンプ" loading="lazy">
+    </div>
+  </div>
+
+  <section class="notes">
+    <h2>判断のポイント</h2>
+    <table>
+      <tr><th>可読性</th><td>対象は50〜70代の土地所有者。設計書も「スマートフォンを最優先」。<br>B案は暗背景の面が2箇所（実績帯・フォーム）あり、実機で読めるかを見る。</td></tr>
+      <tr><th>格・信頼感</th><td>B案の強み。写真が大きく入ることで全国ブランドの重みが出る。</td></tr>
+      <tr><th>過度な投資表現</th><td>設計書7-1「必ず儲かる・高利回り保証等は使わない」。<br>両案とも該当表現なし。B案が高級不動産広告に寄りすぎていないかを見る。</td></tr>
+      <tr><th>★実装コスト</th><td><strong>B案は実写が6枚以上必要。</strong>現在使える実写は0枚で、<br>ユーミーマンション本部からの写真提供可否も未確認。<br><strong>A案は写真1〜2枚で成立する。</strong></td></tr>
+    </table>
+
+    <div class="q">
+      <strong>★この2案は、写真が揃うかどうかで決まります。</strong><br>
+      本部の公式写真が十分に提供される → <strong>B案</strong>が成立します。<br>
+      提供されない・少ない → <strong>A案</strong>（現状の素材でも成立します）。<br>
+      <br>
+      なお、掲載中の建物・土地の写真は<strong>すべてAI生成のイメージ画像</strong>です。<br>
+      公開時にはユーミーマンションの実写へ差し替えます。
+    </div>
+  </section>
+</main>
+
+<footer>
+  実装版LP（フォーム・計測が動作します）→ <a href="../">https://hoshizaemonn.github.io/fb-yumy-lp/</a>
+</footer>
+
+<script>
+var view='a', mode='single';
+function render(){
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.classList.toggle('on', t.dataset.view===view);
+  });
+  document.querySelectorAll('.mode button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.mode===mode);
+  });
+  document.querySelectorAll('.panel').forEach(function(p){
+    p.classList.toggle('hide', mode==='single' && p.dataset.panel!==view);
+  });
+}
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){ view=t.dataset.view; mode='single'; render(); });
+});
+document.querySelectorAll('.mode button').forEach(function(b){
+  b.addEventListener('click',function(){ mode=b.dataset.mode; render(); });
+});
+render();
+</script>
+</body>
+</html>
