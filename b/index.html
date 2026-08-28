@@ -431,6 +431,38 @@ section.band{background:#0a1420}
 .b-split-photo{align-self:stretch;min-height:380px;border-radius:4px;background-size:cover;background-position:center;box-shadow:var(--shadow)}
 .b-split .worry-grid{grid-template-columns:1fr}
 @media(max-width:820px){.b-split{grid-template-columns:1fr;gap:20px}.b-split-photo{min-height:220px}}
+
+/* ===== FVバッジ1行化＋レスポンシブ整理（2026-08-28）===== */
+/* バッジ単体は絶対に途中で折らない */
+.hv-badge{white-space:nowrap}
+
+/* PC（ヒーロー2カラム時）：カード内393pxに3つ収める
+   font-weight 700→600 は10pxで「業・築・務」の横画が埋まるため */
+@media (min-width:1120px){
+  .hv-badges{gap:6px}
+  .hv-badge{font-size:10px;letter-spacing:0;padding:5px 6px;font-weight:600}
+}
+
+/* 1119px以下：ヒーローを1カラムにして視覚列に横幅を与える
+   （901-1119pxはカードが300-352pxしか無く、バッジ2行＋H1が4行に割れていた）
+   併せてFV画像が肥大しないよう視覚列に上限を設ける */
+@media (max-width:1119px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-visual{max-width:760px;margin-left:auto;margin-right:auto}
+}
+
+/* 400px以下：バッジを3行に割らない（詰めるのは余白のみ・文字サイズは維持） */
+@media (max-width:400px){
+  .hv-badges{gap:6px}
+  .hv-badge{padding:6px 8px;letter-spacing:.02em}
+}
+
+/* 400px以下：実績帯のセルが最小幅を超えて横スクロールを起こすのを防ぐ */
+@media (max-width:400px){
+  .trust .cell{padding:20px 10px}
+  .trust .num{font-size:27px}
+  .trust .num.n1{font-size:21px}
+}
 </style>
 </head>
 <body>
@@ -446,7 +478,6 @@ section.band{background:#0a1420}
   <div class="wrap hd">
     <a class="brand" href="#" data-totop style="text-decoration:none;display:inline-flex;align-items:center;gap:12px">
       <img src="../img/ym-logo.png" srcset="../img/ym-logo.png 1x, ../img/ym-logo@2x.png 2x" alt="ユーミーマンション" height="38" style="height:38px;width:auto;display:block">
-      <span class="brand-sub" style="font-size:11px;letter-spacing:.03em;color:#5b6b7a;line-height:1.35">福岡ビルド株式会社<br>ユーミーマンション事業部</span>
     </a>
     <div class="hd-cta">
       <a class="hd-tel" href="tel:0924072822">
