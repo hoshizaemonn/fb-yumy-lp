@@ -132,23 +132,32 @@ header{
   border:1px solid #C3D8EF;border-radius:2px;padding:6px 10px;font-weight:700;letter-spacing:.04em}
 
 /* ---------- trust strip ---------- */
-.trust{background:var(--ink);color:#fff;padding:54px 0 32px}
-.trust-head{text-align:center;margin-bottom:28px}
-.trust-eyebrow{display:inline-flex;align-items:center;gap:.7em;font-size:12px;font-weight:700;
-  letter-spacing:.18em;color:#A9C6E6;margin-bottom:12px}
-.trust-eyebrow::before,.trust-eyebrow::after{content:"";width:24px;height:1px;background:#3F6AA0;display:inline-block}
-.trust-lead{font-family:var(--disp);font-weight:700;font-size:clamp(18px,2.3vw,24px);letter-spacing:.04em}
-.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.trust .cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:5px;
-  padding:24px 16px;text-align:center;display:flex;flex-direction:column;align-items:center}
-.trust .lb{font-size:11px;font-weight:700;letter-spacing:.16em;color:#A9C6E6;margin-bottom:12px}
-.trust .num{font-family:var(--disp);font-weight:700;font-size:33px;letter-spacing:.02em;line-height:1.1;
+/* 2026-08-28 カンプ準拠に改修：枠付きボックス4個 → 縦罫線だけの4分割。
+   カンプ実測: 帯色#022F70／罫線x358,698,1034（セル幅338・ブロック幅1352）／
+   見出し42px・ラベル20px・数値80px・単位27px・補足16px・注記14px。 */
+.trust{background:#022F70;color:#fff;padding:33px 0 26px}
+.trust-head{text-align:center;margin-bottom:39px}
+.trust-eyebrow{display:inline-flex;align-items:center;gap:11px;
+  font-family:var(--disp);font-size:24px;font-weight:600;letter-spacing:.4em;
+  color:#fff;margin-bottom:14px}
+.trust-eyebrow::before,.trust-eyebrow::after{content:"";width:64px;height:1px;
+  background:rgba(255,255,255,.55);display:inline-block}
+.trust-lead{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3vw,43px);
+  letter-spacing:.02em;line-height:1.35}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  max-width:1352px;margin:0 auto;padding:0 20px}
+.trust .cell{container-type:inline-size;padding:0 14px;text-align:center;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start}
+.trust .cell + .cell{border-left:1px solid rgba(255,255,255,.32)}
+.trust .lb{font-size:clamp(12px,6.45cqi,20px);font-weight:500;letter-spacing:.04em;color:#fff;margin-bottom:31px}
+.trust .num{font-family:var(--disp);font-weight:700;font-size:clamp(30px,19.35cqi,60px);letter-spacing:0;line-height:1;
   display:flex;align-items:baseline;justify-content:center}
-.trust .num.n1{font-size:25px;align-items:center;gap:.35em}
-.trust .num .unit{font-size:15px;font-weight:400;color:#A9C6E6;margin-left:.14em}
-.trust .num .crown{width:22px;height:22px;color:#E3C169;flex:none}
-.trust .cap{font-size:11.5px;letter-spacing:.05em;opacity:.62;margin-top:12px;line-height:1.6}
-.trust-foot{font-size:10.5px;color:rgba(255,255,255,.45);text-align:center;max-width:700px;margin:26px auto 0;line-height:1.85}
+.trust .num.n1{font-size:clamp(24px,16.1cqi,50px)}
+.trust .num .unit{font-size:clamp(12px,7.74cqi,24px);font-weight:400;color:#fff;margin-left:.12em}
+.trust .cap{font-size:clamp(11px,6.77cqi,21px);letter-spacing:.02em;color:rgba(255,255,255,.92);
+  margin-top:24px;line-height:1.6}
+.trust-foot{font-size:13px;color:rgba(255,255,255,.82);text-align:center;
+  max-width:960px;margin:6px auto 0;line-height:1.9}
 
 /* ---------- section frame ---------- */
 section.blk{padding:76px 0}
@@ -157,16 +166,38 @@ section.band{background:var(--band)}
 .sec-head .sec-title{margin-bottom:14px}
 
 /* ---------- worries ---------- */
-.worry-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+/* 2026-08-28 カンプ準拠に改修。カンプ実測: 背景#F3F8FE／見出し50px(行送り1.34)／
+   リード21px／eyebrow17px／カード高78px・行間17px・列間21px／
+   カードの並びは「左列に1・2・3、右列に4・5・6」＝縦方向（grid-auto-flow:column）／
+   CTAボタン 444x74px #115095。 */
+.worries{background:#F3F8FE}
+.worries .sec-head{margin-bottom:42px;max-width:none}
+.worries .eyebrow{font-size:17px;letter-spacing:.08em;margin-bottom:16px}
+.worries .eyebrow::before{width:30px}
+.worries .sec-title{font-size:clamp(26px,3.5vw,50px);line-height:1.34}
+.worries .lead{font-size:21px;line-height:1.9;margin-top:22px}
+.worry-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,auto);
+  grid-auto-flow:column;gap:17px 21px}
 .worry{
-  background:var(--white);border:1px solid var(--line);border-radius:3px;
-  padding:20px 22px 20px 54px;position:relative;font-size:15.5px;font-weight:500;box-shadow:var(--shadow)
+  background:#fff;border:1px solid #DDE3EA;border-radius:8px;
+  padding:24px 24px 24px 78px;position:relative;font-size:18px;font-weight:500;
+  line-height:1.6;color:#1F2C3D;box-shadow:none
 }
-.worry::before{content:"";position:absolute;left:18px;top:21px;width:22px;height:22px;border-radius:50%;
-  background:var(--accent)}
-.worry::after{content:"";position:absolute;left:24px;top:26px;width:10px;height:5.5px;
-  border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
-.worry-cta{margin-top:34px;text-align:center}
+.worry::before{content:"";position:absolute;left:26px;top:50%;margin-top:-14.5px;
+  width:29px;height:29px;border-radius:50%;background:#0E4596}
+.worry::after{content:"";position:absolute;left:34.5px;top:50%;margin-top:-4.5px;
+  width:12px;height:6.5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;
+  transform:rotate(-45deg)}
+.worry-cta{margin-top:40px;text-align:center}
+.worries .btn{font-size:20px;padding:23px 42px;border-radius:4px}
+@media (max-width:820px){
+  .worry-grid{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .worries .lead{font-size:17px}
+  .worry{font-size:16px;padding:20px 20px 20px 64px}
+  .worry::before{left:22px;width:24px;height:24px;margin-top:-12px}
+  .worry::after{left:29px;width:10px;height:5.5px;margin-top:-4px}
+  .worries .btn{font-size:17px;padding:18px 30px}
+}
 
 /* ---------- solution / compare ---------- */
 .sol-lead{max-width:64ch;font-size:16px;color:var(--ink2);margin-bottom:8px}
@@ -447,12 +478,8 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
   .hv-badge{padding:6px 8px;letter-spacing:.02em}
 }
 
-/* 400px以下：実績帯のセルが最小幅を超えて横スクロールを起こすのを防ぐ */
-@media (max-width:400px){
-  .trust .cell{padding:20px 10px}
-  .trust .num{font-size:27px}
-  .trust .num.n1{font-size:21px}
-}
+/* 実績帯は .trust .cell を container にして cqi で追従させたので、
+   旧「400px以下で数値を縮める」上書きは不要になった（2026-08-28 撤去） */
 </style>
 </head>
 <body>
@@ -583,7 +610,7 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
     </div>
     <div class="cell">
       <span class="lb">RC造 建築戸数</span>
-      <div class="num n1"><svg class="crown" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3h12v2h3v3a4 4 0 0 1-4 4h-.4A6 6 0 0 1 13 17.9V20h3v2H8v-2h3v-2.1A6 6 0 0 1 7.4 15H7a4 4 0 0 1-4-4V5h3V3zm0 4H5v0.9A2 2 0 0 0 6 12V7zm12 0v5a2 2 0 0 0 1-1.1V7z"/></svg>全国No.1</div>
+      <div class="num n1">全国No.1</div>
       <div class="cap">2026年3月 東京商工リサーチ調べ</div>
     </div>
     <div class="cell">
@@ -596,7 +623,7 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
 </div>
 
 <!-- ================= WORRIES ================= -->
-<section class="blk">
+<section class="blk worries">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">お悩み</span>
