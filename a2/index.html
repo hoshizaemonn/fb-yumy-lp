@@ -18,18 +18,22 @@
     document.querySelectorAll('.tabs button').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===n);});
     document.querySelectorAll('.tabpane').forEach(function(p){p.hidden = p.getAttribute('data-pane')!==n;});
   }
-  function fromHash(){ if(location.hash==='#corporate'){ openTab('corp'); } }
+  var HASH_TAB={'#corporate':'corp','#partner':'owner'};
+  function fromHash(){ var t=HASH_TAB[location.hash]; if(t){ openTab(t); } }
   window.addEventListener('hashchange', fromHash);
   window.addEventListener('load', fromHash);
   document.addEventListener('click', function(e){
-    var a=e.target.closest && e.target.closest('a[data-tabjump],a[data-kind]');
+    var a=e.target.closest && e.target.closest('a[data-tabjump],a[data-kind],a[data-corpkind]');
     if(!a) return;
+    function pick(sel,text){ if(!sel) return; [].forEach.call(sel.options,function(o){ if(o.text===text) sel.value=o.value||o.text; }); }
     if(a.dataset.tabjump){ setTimeout(function(){openTab(a.dataset.tabjump);},0); }
     if(a.dataset.kind){
       var sel=document.querySelector('[data-kind-target]');
-      if(sel){ openTab('owner');
-        [].forEach.call(sel.options,function(o){ if(o.text===a.dataset.kind) sel.value=o.value||o.text; });
-      }
+      if(sel){ openTab('owner'); pick(sel,a.dataset.kind); }
+    }
+    if(a.dataset.corpkind){
+      var cs=document.querySelector('[data-corpkind-target]');
+      openTab('corp'); pick(cs,a.dataset.corpkind);
     }
   });
 })();
@@ -592,15 +596,14 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
 .brand img{display:block;width:auto}
 .brand .bl-ym{height:26px}
 .brand .bl-x{font-size:13px;color:#8FA6BC;font-weight:400;line-height:1;flex:0 0 auto}
-.brand .bl-fb{display:flex;flex-direction:column;gap:3px;line-height:1;min-width:0}
-.brand .bl-fb img{height:19px}
+.brand .bl-fb{display:flex;align-items:center;line-height:1;flex:0 0 auto}
+.brand .bl-fb img{height:30px;width:auto;align-self:center;flex:0 0 auto}
 .brand .bl-cap{font-size:9.5px;letter-spacing:.01em;color:#5B7186;white-space:nowrap;line-height:1.2}
 header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;padding-bottom:8px}
 @media (max-width:620px){
   .brand{gap:7px}
   .brand .bl-ym{height:21px}
-  .brand .bl-fb img{height:16px}
-  .brand .bl-cap{font-size:8.5px}
+  .brand .bl-fb img{height:26px}
 }
 @media (max-width:900px){
   /* タブレット幅で「福岡県正規事業者」の表記が電話番号と重なるため隠す。
@@ -614,7 +617,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
 /* 621〜780px でヘッダーのロゴと電話番号のすき間が10pxしか無く際どいため、ロゴを少し縮める */
 @media (max-width:780px){
   .brand .bl-ym{height:22px}
-  .brand .bl-fb img{height:16px}
+  .brand .bl-fb img{height:24px}
   .brand{gap:7px}
 }
 
@@ -638,6 +641,18 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   border:1px solid #E3E8EE;background:#F2F5F9}
 .reason .pf-note{display:inline-block;margin-top:6px;color:#7A8FA3;font-size:12px}
 @media (max-width:620px){.reason .pf{width:72px;height:72px;margin-bottom:11px}}
+
+/* ── 2026-09-02 ヘッダーのロゴ横伸び対策 ──
+   .bl-cap（ユーミーマンション 福岡県正規事業者）がflex列の幅を165pxまで広げ、
+   高さだけ指定していた福岡ビルドのロゴが横に約3倍伸びていた。
+   キャプションはFV1行目と重複していたため削除し、画像は幅auto固定にした。 */
+.brand .bl-fb img{width:auto!important;max-width:none;object-fit:contain}
+
+/* ── 2026-09-02 アンカー着地時にタブが固定ヘッダーの下に隠れないよう余白を確保 ── */
+html{scroll-padding-top:96px}
+#corporate,#partner,#corporate-info,#partner-info{scroll-margin-top:96px}
+@media (max-width:620px){html{scroll-padding-top:84px}
+  #corporate,#partner,#corporate-info,#partner-info{scroll-margin-top:84px}}
 </style>
 <link rel="canonical" href="https://fb-home.jp/">
 <meta property="og:type" content="website">
@@ -660,7 +675,6 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
       <span class="bl-x" aria-hidden="true">×</span>
       <span class="bl-fb">
         <img src="../img/fukuoka-build-logo.png" alt="福岡ビルド株式会社">
-        <span class="bl-cap">ユーミーマンション 福岡県正規事業者</span>
       </span>
     </a>
     <div class="hd-cta">
@@ -954,7 +968,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
         </div>
       </div>
 
-      <div class="form-card rv" id="corporate">
+      <div class="form-card rv" id="corporate"><span id="partner" class="anchor-alias" aria-hidden="true"></span>
         <div class="tabs" role="tablist">
           <button class="active" data-tab="owner">土地所有者の方</button>
           <button data-tab="corp">法人の方</button>
@@ -971,6 +985,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
                 <option>建築可否診断</option>
                 <option>建替えのご相談</option>
                 <option>土地活用ガイド（資料請求）</option>
+                <option>不動産業者からの土地情報のご提供</option>
                 <option>電話・面談のご予約</option>
                 <option>その他</option>
               </select></div>
@@ -998,6 +1013,12 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
         <!-- 法人 -->
         <div class="tabpane" data-pane="corp" hidden>
         <form data-form="corp" novalidate>
+          <div class="field"><label>ご相談の区分<span class="req">必須</span></label>
+            <select name="corpkind" data-corpkind-target required>
+              <option>自社・資産管理会社の土地活用</option>
+              <option>ご紹介（金融機関・士業・管理会社）</option>
+            </select>
+          </div>
           <div class="grid2">
             <div class="field"><label>法人名<span class="req">必須</span></label><input type="text" name="company" required autocomplete="organization" placeholder="株式会社〇〇"></div>
             <div class="field"><label>ご担当者名<span class="req">必須</span></label><input type="text" name="name" required autocomplete="name" placeholder="担当 太郎"></div>
@@ -1040,9 +1061,9 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv"><span class="eyebrow">その他のご相談窓口</span><h2 class="sec-title"><span class="nb">法人・不動産業者・</span><span class="nb">ご紹介の皆様へ。</span></h2><p class="lead">土地所有者の方以外からのご相談も承っています。目的に応じた窓口をご用意しています。</p></div>
     <div class="sub-grid rv">
-      <div class="sub" id="corporate-info"><span class="sub-tag">法人向け</span><h3>法人・資産管理会社の皆様</h3><p>社有地・遊休地・事業用資産の活用や組み換えを、建築会社の視点でご相談いただけます。RC賃貸マンションによる長期保有・資産形成のご提案が可能です。</p><a class="go" href="#corporate" data-tabjump="corp">法人向けフォームへ →</a></div>
-      <div class="sub" id="partner"><span class="sub-tag">業者連携</span><h3>不動産業者の皆様へ</h3><p>お持ちの土地・売却物件に、RC賃貸マンションの建築計画・概算収支をあわせてご提案できます。土地情報の持ち込み・共同検討を歓迎します。</p><a class="go" href="tel:0924072822">お電話でご相談（092-407-2822）→</a><br><a class="go" href="#corporate" data-tabjump="corp">土地情報をフォームで送る →</a></div>
-      <div class="sub"><span class="sub-tag">ご紹介</span><h3>金融機関・士業・管理会社の皆様</h3><p>お客様の土地活用のご相談に、RC賃貸マンションの建築会社をお探しの際はご紹介ください。建築可否・概算収支の初期整理からお手伝いします。</p><a class="go" href="#corporate" data-tabjump="corp">ご紹介フォームへ →</a></div>
+      <div class="sub" id="corporate-info"><span class="sub-tag">法人向け</span><h3>法人・資産管理会社の皆様</h3><p>社有地・遊休地・事業用資産の活用や組み換えを、建築会社の視点でご相談いただけます。RC賃貸マンションによる長期保有・資産形成のご提案が可能です。</p><a class="go" href="#corporate" data-corpkind="自社・資産管理会社の土地活用">法人向けフォームへ →</a></div>
+      <div class="sub" id="partner-info"><span class="sub-tag">業者連携</span><h3>不動産業者の皆様へ</h3><p>お持ちの土地・売却物件に、RC賃貸マンションの建築計画・概算収支をあわせてご提案できます。土地情報の持ち込み・共同検討を歓迎します。</p><a class="go" href="tel:0924072822">お電話でご相談（092-407-2822）→</a><br><a class="go" href="#partner" data-kind="不動産業者からの土地情報のご提供">土地情報をフォームで送る →</a></div>
+      <div class="sub"><span class="sub-tag">ご紹介</span><h3>金融機関・士業・管理会社の皆様</h3><p>お客様の土地活用のご相談に、RC賃貸マンションの建築会社をお探しの際はご紹介ください。建築可否・概算収支の初期整理からお手伝いします。</p><a class="go" href="#corporate" data-corpkind="ご紹介（金融機関・士業・管理会社）">ご紹介フォームへ →</a></div>
     </div>
   </div>
 </section>
