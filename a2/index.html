@@ -688,6 +688,36 @@ header .hd{min-height:88px}
   .menu-grid, .reason-grid, .sub-grid, .flow { grid-auto-rows: 1fr; }
   .menu-grid > .menu-c, .reason-grid > .reason, .sub-grid > .sub, .flow > .step { height: 100%; }
 }
+
+/* ===== 2026-09-02 担当者紹介（改善提案書 p.5-6 の掲載項目に合わせて作り直し）=====
+   基本情報（顔写真・氏名・役職・担当範囲）＋信頼情報（経歴・保有資格）を1枚に収める。
+   実データ未受領のため中身は仮。仮であることが読み手に分かる表示にしている。 */
+.staff-tmp-note{max-width:760px;margin:0 auto 22px;padding:11px 16px;border:1px dashed #C7D4E2;
+  border-radius:4px;background:#fff;color:#5B7186;font-size:13px;line-height:1.7;text-align:center}
+.staff-tmp-note strong{color:var(--accent);font-weight:700}
+.staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:1fr}
+.staff{height:100%;background:#fff;border:1px solid #E3E8EE;border-radius:4px;padding:24px 20px;text-align:center}
+.staff .pf{width:88px;height:88px;border-radius:50%;display:block;margin:0 auto 14px;
+  border:1px solid #E3E8EE;background:#F2F5F9}
+.staff .st-team{font-size:12px;letter-spacing:.04em;color:var(--accent);margin:0 0 6px}
+.staff .st-name{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--ink);margin:0 0 5px;
+  display:flex;align-items:center;justify-content:center;gap:7px;line-height:1.3}
+.staff .st-tmp{font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:.06em;color:#fff;
+  background:#9BAEC2;border-radius:2px;padding:2px 6px;line-height:1.4}
+.staff .st-role{font-size:12.5px;color:#5B7186;line-height:1.6;margin:0 0 14px}
+.staff .st-dl{margin:0;border-top:1px solid #EDF1F6;text-align:left}
+.staff .st-dl > div{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:9px 0;
+  border-bottom:1px solid #EDF1F6}
+.staff .st-dl dt{font-size:11.5px;color:#7A8FA3;line-height:1.6;margin:0}
+.staff .st-dl dd{font-size:13px;color:var(--stone);line-height:1.65;margin:0}
+@media (max-width:900px){ .staff-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto} }
+@media (max-width:620px){
+  .staff{padding:20px 16px}
+  .staff .pf{width:76px;height:76px}
+  .staff .st-name{font-size:18px}
+  .staff .st-dl > div{grid-template-columns:66px 1fr;gap:8px}
+}
+.form-note a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 </style>
 <link rel="canonical" href="https://fb-home.jp/">
 <meta property="og:type" content="website">
@@ -937,6 +967,59 @@ header .hd{min-height:88px}
   </div>
 </section>
 
+<!-- ================= 担当者紹介（改善提案書 p.5-6）=================
+     提案書の指示：
+       ・相談メニューの直前に新設する（2026-09-02 にこの位置へ移した）
+       ・掲載項目＝基本情報（顔写真・氏名・役職・担当範囲）／信頼情報（建築・不動産分野の経歴・保有資格）
+       ・一言＝建てるかどうかを決める前の相談も歓迎する旨を短く
+     ★要確認：本人の掲載了承、写真使用許諾、異動時の更新担当を確定する。
+       氏名・役職・経歴・保有資格はすべて仮置き。実データを受領して差し替える。 -->
+<section class="blk band">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow" style="justify-content:center">担当者のご紹介</span>
+      <h2 class="sec-title"><span class="nb">ご相談は、</span><span class="nb">この担当者が</span><span class="nb">お受けします。</span></h2>
+      <p class="lead">お問い合わせのあと、どの担当が対応するのかを先にご確認いただけます。</p>
+    </div>
+    <p class="staff-tmp-note rv">※このセクションの顔写真・氏名・役職・経歴・保有資格は、掲載枠を確認するための<strong>仮の内容</strong>です。ご本人の掲載了承と写真使用許諾をいただいたうえで差し替えます。</p>
+    <div class="staff-grid rv">
+      <div class="staff">
+        <img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy">
+        <p class="st-team">ユーミーマンション事業部</p>
+        <p class="st-name">◯◯ ◯◯<span class="st-tmp">仮</span></p>
+        <p class="st-role">ユーミーマンション事業部 ／ 役職（確認中）</p>
+        <dl class="st-dl">
+          <div><dt>担当範囲</dt><dd>初回のご相談、土地条件の整理、事業収支のご提示</dd></div>
+          <div><dt>経歴</dt><dd>建築・不動産分野 ◯年（確認中）</dd></div>
+          <div><dt>保有資格</dt><dd>◯◯◯◯（確認中）</dd></div>
+        </dl>
+      </div>
+      <div class="staff">
+        <img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy">
+        <p class="st-team">設計（オリナス株式会社）</p>
+        <p class="st-name">◯◯ ◯◯<span class="st-tmp">仮</span></p>
+        <p class="st-role">オリナス株式会社 一級建築士事務所 ／ 役職（確認中）</p>
+        <dl class="st-dl">
+          <div><dt>担当範囲</dt><dd>法規確認、プラン作成、確認申請までの設計</dd></div>
+          <div><dt>経歴</dt><dd>建築設計分野 ◯年（確認中）</dd></div>
+          <div><dt>保有資格</dt><dd>一級建築士（登録番号は確認中）</dd></div>
+        </dl>
+      </div>
+      <div class="staff">
+        <img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy">
+        <p class="st-team">施工（福岡ビルド）</p>
+        <p class="st-name">◯◯ ◯◯<span class="st-tmp">仮</span></p>
+        <p class="st-role">福岡ビルド株式会社 工事部 ／ 役職（確認中）</p>
+        <dl class="st-dl">
+          <div><dt>担当範囲</dt><dd>着工後の品質・工程・原価の管理</dd></div>
+          <div><dt>経歴</dt><dd>建築施工分野 ◯年（確認中）</dd></div>
+          <div><dt>保有資格</dt><dd>◯◯◯◯（確認中）</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="compare-note rv" style="margin-top:18px">建てるかどうかをお決めになる前のご相談も歓迎しています。所在地と面積だけでも初期の確認は可能です。</p>
+  </div>
+</section>
 <!-- ================= MENU ================= -->
 <section class="blk band menu-sec">
   <div class="wrap">
@@ -974,23 +1057,7 @@ header .hd{min-height:88px}
   </div>
 </section>
 
-<!-- ================= 担当者紹介（PDF 3章）================= -->
-<section class="blk band">
-  <div class="wrap">
-    <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
-      <span class="eyebrow" style="justify-content:center">担当者のご紹介</span>
-      <h2 class="sec-title"><span class="nb">ご相談は、</span><span class="nb">この担当者が</span><span class="nb">お受けします。</span></h2>
-      <p class="lead">お問い合わせのあと、どの担当が対応するのかを先にご確認いただけます。</p>
-    </div>
-    <!-- ★仮置き：顔写真・氏名は共通のシルエット画像＋役割名で仮に置いている。本人の掲載了承と写真使用許諾を得たうえで、実写真・氏名・役職に差し替える -->
-    <div class="reason-grid rv">
-      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>ユーミーマンション事業部</h3><p>初回のご相談、土地条件の整理、事業収支のご提示を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
-      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>設計（オリナス株式会社）</h3><p>法規確認、プラン作成、確認申請までの設計を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
-      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>施工（福岡ビルド）</h3><p>着工後の品質・工程・原価の管理を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
-    </div>
-    <p class="compare-note rv" style="margin-top:18px">建てるかどうかをお決めになる前のご相談も歓迎しています。</p>
-  </div>
-</section>
+
 
 <!-- ================= FAQ ================= -->
 <section class="blk band">
@@ -1113,7 +1180,7 @@ header .hd{min-height:88px}
           <p class="form-note">※LINE公式アカウントのURL・リッチメニュー・自動応答・ステップ配信は実装時に設定します。</p>
         </div>
 
-        <p class="form-note">ご入力いただいた情報は、ご相談への対応及び必要な範囲での資料作成に利用します。ユーミーマンション事業部にて確認のうえ、初回のご連絡を差し上げます。詳細はプライバシーポリシーをご確認ください。</p>
+        <p class="form-note">ご入力いただいた情報は、ご相談への対応及び必要な範囲での資料作成に利用します。ユーミーマンション事業部にて確認のうえ、初回のご連絡を差し上げます。詳細は<a href="https://f-build.co.jp/privacy-policy/" target="_blank" rel="noopener">プライバシーポリシー</a>をご確認ください。</p>
       </div>
     </div>
   </div>
