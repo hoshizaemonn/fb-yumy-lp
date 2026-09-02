@@ -653,6 +653,41 @@ html{scroll-padding-top:96px}
 #corporate,#partner,#corporate-info,#partner-info{scroll-margin-top:96px}
 @media (max-width:620px){html{scroll-padding-top:84px}
   #corporate,#partner,#corporate-info,#partner-info{scroll-margin-top:84px}}
+
+/* ── 2026-09-02 福岡ビルド紹介セクションの補足文 ── */
+.reason .rn-note{display:inline-block;margin-top:4px;color:#7A8FA3;font-size:12px;line-height:1.6}
+
+/* ===== 2026-09-02 ヘッダー再構成（改善提案書 p.4 の指示に戻す）=====
+   指示：両ロゴを「×」で併記し、その直下へ「ユーミーマンション 福岡県正規事業者」を表示。
+        スマートフォンでも福岡ビルドの会社名が省略されない大きさを確保する。
+   旧実装はキャプションを福岡ビルドのロゴと同じ縦積みflexに入れていたため、
+   キャプションの幅がロゴを横に約3倍引き伸ばしていた。
+   → ロゴ行(.bl-row)とキャプション(.bl-cap)を分け、ヘッダーの高さを広げて両立させる。 */
+.brand{flex-direction:column!important;align-items:flex-start;gap:5px}
+.brand .bl-row{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .bl-cap{display:block!important;font-size:11px;letter-spacing:.02em;color:#5B7186;
+  white-space:nowrap;line-height:1.2}
+header .hd{min-height:88px}
+@media (max-width:900px){ .brand .bl-cap{display:block!important} }
+@media (max-width:780px){
+  .brand .bl-row{gap:8px}
+  .brand .bl-cap{font-size:10px}
+}
+@media (max-width:620px){
+  /* スマホでも福岡ビルドの社名が読める大きさを確保する（提案書の指示） */
+  .brand .bl-ym{height:20px}
+  .brand .bl-fb img{height:26px}
+  .brand .bl-row{gap:7px}
+  .brand .bl-cap{font-size:9.5px;letter-spacing:0}
+  header .hd{min-height:80px}
+}
+@media (max-width:374px){ .brand .bl-cap{font-size:9px} }
+
+/* ── 2026-09-02 スマホでも同種カードの高さを揃える（620px以下は対象外になっていた） ── */
+@media (max-width:620px){
+  .menu-grid, .reason-grid, .sub-grid, .flow { grid-auto-rows: 1fr; }
+  .menu-grid > .menu-c, .reason-grid > .reason, .sub-grid > .sub, .flow > .step { height: 100%; }
+}
 </style>
 <link rel="canonical" href="https://fb-home.jp/">
 <meta property="og:type" content="website">
@@ -671,11 +706,14 @@ html{scroll-padding-top:96px}
 <header>
   <div class="wrap hd">
     <a class="brand" href="#" data-totop>
-      <img class="bl-ym" src="../img/ym-logo.png" srcset="../img/ym-logo.png 1x, ../img/ym-logo@2x.png 2x" alt="ユーミーマンション">
-      <span class="bl-x" aria-hidden="true">×</span>
-      <span class="bl-fb">
-        <img src="../img/fukuoka-build-logo.png" alt="福岡ビルド株式会社">
+      <span class="bl-row">
+        <img class="bl-ym" src="../img/ym-logo.png" srcset="../img/ym-logo.png 1x, ../img/ym-logo@2x.png 2x" alt="ユーミーマンション">
+        <span class="bl-x" aria-hidden="true">×</span>
+        <span class="bl-fb">
+          <img src="../img/fukuoka-build-logo.png" alt="福岡ビルド株式会社">
+        </span>
       </span>
+      <span class="bl-cap">ユーミーマンション 福岡県正規事業者</span>
     </a>
     <div class="hd-cta">
       <a class="hd-tel" href="tel:0924072822">
@@ -760,21 +798,45 @@ html{scroll-padding-top:96px}
     <div class="worry-cta rv"><a class="btn btn-primary" href="#soudan">当てはまる悩みを相談する</a></div>
   </div>
 </section>
-<!-- ================= 福岡ビルド ================= -->
+<!-- ================= 福岡ビルド紹介（改善提案書 p.4）=================
+     提案書では「福岡ビルド紹介」と「なぜ福岡ビルドか」は別セクション。
+     旧版は2つを1つに混ぜ、見出しだけ「なぜ福岡ビルドか」で中身が紹介セクションの4柱になっていた。
+     2026-09-02 に提案書どおり2セクションへ分離した。 -->
 <section class="blk">
+  <div class="wrap">
+    <div class="reason-head rv">
+      <div>
+      <span class="eyebrow">福岡ビルドのご紹介</span>
+      <h2 class="sec-title"><span class="nb">全国のノウハウを、</span><span class="nb">福岡の現場力で。</span></h2>
+      </div>
+      <p class="lead">ユーミーマンションの全国ネットワークで蓄積された商品・事業ノウハウ。それを福岡の土地条件、賃貸市場、建築コストに合わせて具体的な計画にするのが、福岡ビルドの役割です。</p>
+    </div>
+    <div class="reason-grid rv">
+      <div class="reason"><div class="rn">01</div><h3>福岡の土地を知る</h3><p>法規制、接道、周辺賃料、事業条件を、地域実務の視点で整理します。</p></div>
+      <div class="reason"><div class="rn">02</div><h3>福岡で設計する</h3><p>グループのオリナス一級建築士事務所と連携して計画します。</p></div>
+      <div class="reason"><div class="rn">03</div><h3>福岡で建てる</h3><p>福岡ビルドが施工主体となり、品質・工程・原価を管理します。</p></div>
+      <div class="reason"><div class="rn">04</div><h3>事業化を支える</h3><p>収支・融資資料・入居募集準備などを、関係先と連携して支援します。<br><span class="rn-note">※対応範囲はご相談時にご説明します。</span></p></div>
+      <!-- ★要確認（提案書 p.4）：入居募集・賃貸管理・経営支援について、福岡ビルドが直接行う範囲と
+           提携先が行う範囲を確定し、この文言を合わせる -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= なぜ福岡ビルドか（改善提案書 p.5）================= -->
+<section class="blk band">
   <div class="wrap">
     <div class="reason-head rv">
       <div>
       <span class="eyebrow">なぜ福岡ビルドか</span>
       <h2 class="sec-title"><span class="nb">同じユーミーマンションでも、</span><br><span class="nb">誰と建てるかで</span><span class="nb">変わります。</span></h2>
       </div>
-      <p class="lead">全国のネットワークで蓄積された商品・事業ノウハウ。それを福岡の土地条件、賃貸市場、建築コストに合わせて具体的な計画にするのが、福岡ビルドの役割です。</p>
+      <p class="lead">商品が同じでも、土地の読み方、設計と施工のつなぎ方、判断材料の揃え方で結果は変わります。福岡ビルドがどう関わるのかを、4つの側面からご説明します。</p>
     </div>
     <div class="reason-grid rv">
-      <div class="reason"><div class="rn">01</div><h3>福岡の土地を知る</h3><p>法規制、接道、周辺賃料、事業条件を、福岡での地域実務の視点で整理します。</p></div>
-      <div class="reason"><div class="rn">02</div><h3>福岡で設計する</h3><p>グループのオリナス株式会社（一級建築士事務所 福岡県知事登録 第1-62087号）が設計を担当し、設計・施工間の法規確認、変更対応、コスト調整を連携して進めます。</p></div>
-      <div class="reason"><div class="rn">03</div><h3>福岡で建てる</h3><p>福岡ビルドは特定建設業許可を有し、施工主体として品質・工程・原価を管理します。</p></div>
-      <div class="reason"><div class="rn">04</div><h3>事業化を支える</h3><p>収支・融資資料・入居募集の準備などを、関係先と連携して支援します。対応範囲はご相談時にご説明します。</p></div>
+      <div class="reason"><div class="rn">01</div><h3>設計体制</h3><p>グループのオリナス株式会社（福岡県知事登録 第1-62087号）が設計を担当し、設計・施工間の法規確認、変更対応、コスト調整を連携して進めます。</p></div>
+      <div class="reason"><div class="rn">02</div><h3>施工体制</h3><p>福岡ビルドは特定建設業許可を有し、施工主体として品質、工程、原価を管理します。<!-- ★要確認（提案書 p.5）：資格者数を掲載する場合は、公開前に在籍数を確定する --></p></div>
+      <div class="reason"><div class="rn">03</div><h3>地域実務</h3><p>用途地域、道路、条例、造成、周辺賃料、地元金融機関への説明資料など、福岡での事業化に必要な判断材料を整理します。</p></div>
+      <div class="reason"><div class="rn">04</div><h3>顔が見える対応</h3><p>事業部、オリナス設計、施工担当の役割を掲載し、相談後に誰が対応するかを明確にします。</p></div>
     </div>
   </div>
 </section>
