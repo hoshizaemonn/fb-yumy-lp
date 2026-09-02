@@ -622,6 +622,22 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
 @media (max-width:720px){
   .hd-tel .lb{display:none}
 }
+
+/* ── 2026-09-02 見出しの語中改行対策（SP 375px で「5つのこ/と。」等に割れていた） ── */
+.sec-title{word-break:auto-phrase}
+.sec-title .nb{display:inline-block}
+/* 実績帯の見出しが SP で「全/国ブランド」に割れるのを止める */
+@media (max-width:620px){
+  .trust-eyebrow{white-space:nowrap;letter-spacing:.16em;font-size:12px}
+  .trust-eyebrow::before,.trust-eyebrow::after{width:22px}
+}
+
+/* ── 2026-09-02 担当者紹介：顔写真は共通シルエットの仮置き ── */
+.reason.staff{text-align:center}
+.reason .pf{width:84px;height:84px;border-radius:50%;display:block;margin:0 auto 14px;
+  border:1px solid #E3E8EE;background:#F2F5F9}
+.reason .pf-note{display:inline-block;margin-top:6px;color:#7A8FA3;font-size:12px}
+@media (max-width:620px){.reason .pf{width:72px;height:72px;margin-bottom:11px}}
 </style>
 <link rel="canonical" href="https://fb-home.jp/">
 <meta property="og:type" content="website">
@@ -716,7 +732,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">お悩み</span>
-      <h2 class="sec-title">その土地、ただ持ち続けますか。</h2>
+      <h2 class="sec-title"><span class="nb">その土地、</span><span class="nb">ただ持ち続けますか。</span></h2>
       <p class="lead">所有地の活用は、判断材料がそろわないまま先延ばしになりがちです。まずは現状を整理するところからご一緒します。</p>
     </div>
     <div class="worry-grid rv">
@@ -736,7 +752,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
     <div class="reason-head rv">
       <div>
       <span class="eyebrow">なぜ福岡ビルドか</span>
-      <h2 class="sec-title">同じユーミーマンションでも、<br>誰と建てるかで変わります。</h2>
+      <h2 class="sec-title"><span class="nb">同じユーミーマンションでも、</span><br><span class="nb">誰と建てるかで</span><span class="nb">変わります。</span></h2>
       </div>
       <p class="lead">全国のネットワークで蓄積された商品・事業ノウハウ。それを福岡の土地条件、賃貸市場、建築コストに合わせて具体的な計画にするのが、福岡ビルドの役割です。</p>
     </div>
@@ -754,7 +770,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">無料診断の内容</span>
-      <h2 class="sec-title">無料診断で分かる、5つのこと。</h2>
+      <h2 class="sec-title"><span class="nb">無料診断で分かる、</span><span class="nb">5つのこと。</span></h2>
       <p class="lead">「何を相談できるのか分からない」まま止まってしまわないよう、お受け取りいただける内容を先にお示しします。</p>
     </div>
     <div class="reason-grid rv">
@@ -832,7 +848,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">福岡県内プロジェクト</span>
-      <h2 class="sec-title">福岡県内 第1号プロジェクト。</h2>
+      <h2 class="sec-title"><span class="nb">福岡県内</span> <span class="nb">第1号プロジェクト。</span></h2>
       <p class="lead">福岡ビルドによるユーミーマンションの県内第1号は、2026年9月着工予定です。着工後は工事の進捗にあわせて、計画・施工体制・品質管理の取り組みを更新してご紹介します。</p>
     </div>
     <div class="reason-grid rv">
@@ -868,7 +884,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow">相談から着工までの流れ</span>
-      <h2 class="sec-title">お問い合わせ後の流れ。</h2>
+      <h2 class="sec-title"><span class="nb">お問い合わせ後の</span><span class="nb">流れ。</span></h2>
       <p class="lead">初回のご相談から着工まで、段階を追って進めます。途中で中止・保留いただいても問題ありません。</p>
     </div>
     <div class="flow rv">
@@ -887,14 +903,14 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow" style="justify-content:center">担当者のご紹介</span>
-      <h2 class="sec-title">ご相談は、この担当者がお受けします。</h2>
+      <h2 class="sec-title"><span class="nb">ご相談は、</span><span class="nb">この担当者が</span><span class="nb">お受けします。</span></h2>
       <p class="lead">お問い合わせのあと、どの担当が対応するのかを先にご確認いただけます。</p>
     </div>
-    <!-- ★要確認：顔写真・氏名・役職・経歴・保有資格は未取得。本人の掲載了承と写真使用許諾を得てから差し替える -->
+    <!-- ★仮置き：顔写真・氏名は共通のシルエット画像＋役割名で仮に置いている。本人の掲載了承と写真使用許諾を得たうえで、実写真・氏名・役職に差し替える -->
     <div class="reason-grid rv">
-      <div class="reason"><div class="rn">－</div><h3>ユーミーマンション事業部</h3><p>初回のご相談、土地条件の整理、事業収支のご提示を担当します。<br><span style="color:#7A8FA3;font-size:12px">※担当者名・顔写真は掲載準備中です。</span></p></div>
-      <div class="reason"><div class="rn">－</div><h3>設計（オリナス株式会社）</h3><p>法規確認、プラン作成、確認申請までの設計を担当します。<br><span style="color:#7A8FA3;font-size:12px">※担当者名・顔写真は掲載準備中です。</span></p></div>
-      <div class="reason"><div class="rn">－</div><h3>施工（福岡ビルド）</h3><p>着工後の品質・工程・原価の管理を担当します。<br><span style="color:#7A8FA3;font-size:12px">※担当者名・顔写真は掲載準備中です。</span></p></div>
+      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>ユーミーマンション事業部</h3><p>初回のご相談、土地条件の整理、事業収支のご提示を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
+      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>設計（オリナス株式会社）</h3><p>法規確認、プラン作成、確認申請までの設計を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
+      <div class="reason staff"><img class="pf" src="../img/avatar-placeholder.png" alt="" width="480" height="480" loading="lazy"><h3>施工（福岡ビルド）</h3><p>着工後の品質・工程・原価の管理を担当します。<br><span class="pf-note">※写真・お名前は仮のものです。</span></p></div>
     </div>
     <p class="compare-note rv" style="margin-top:18px">建てるかどうかをお決めになる前のご相談も歓迎しています。</p>
   </div>
@@ -905,7 +921,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
   <div class="wrap">
     <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
       <span class="eyebrow" style="justify-content:center">よくあるご質問</span>
-      <h2 class="sec-title">ご相談前の、よくあるご質問。</h2>
+      <h2 class="sec-title"><span class="nb">ご相談前の、</span><span class="nb">よくあるご質問。</span></h2>
     </div>
     <div class="faq rv">
       <div class="qa"><button>どのくらいの土地の広さから相談できますか？</button><div class="ans"><p>土地の規模・立地・用途地域により建築可否は異なります。一般的な目安としては、一定の面積（おおむね50坪程度以上）から検討対象となることが多いですが、形状や立地によっても変わります。まずは所在地や面積をお知らせいただければ、建てられるかどうかの初期の見立てからご案内します。規模が小さい場合の別の活用方法も含めてご相談ください。</p></div></div>
@@ -1022,7 +1038,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
 <!-- ================= SUB ROUTES ================= -->
 <section class="blk subroutes" id="sub">
   <div class="wrap">
-    <div class="sec-head rv"><span class="eyebrow">その他のご相談窓口</span><h2 class="sec-title">法人・不動産業者・ご紹介の皆様へ。</h2><p class="lead">土地所有者の方以外からのご相談も承っています。目的に応じた窓口をご用意しています。</p></div>
+    <div class="sec-head rv"><span class="eyebrow">その他のご相談窓口</span><h2 class="sec-title"><span class="nb">法人・不動産業者・</span><span class="nb">ご紹介の皆様へ。</span></h2><p class="lead">土地所有者の方以外からのご相談も承っています。目的に応じた窓口をご用意しています。</p></div>
     <div class="sub-grid rv">
       <div class="sub" id="corporate-info"><span class="sub-tag">法人向け</span><h3>法人・資産管理会社の皆様</h3><p>社有地・遊休地・事業用資産の活用や組み換えを、建築会社の視点でご相談いただけます。RC賃貸マンションによる長期保有・資産形成のご提案が可能です。</p><a class="go" href="#corporate" data-tabjump="corp">法人向けフォームへ →</a></div>
       <div class="sub" id="partner"><span class="sub-tag">業者連携</span><h3>不動産業者の皆様へ</h3><p>お持ちの土地・売却物件に、RC賃貸マンションの建築計画・概算収支をあわせてご提案できます。土地情報の持ち込み・共同検討を歓迎します。</p><a class="go" href="tel:0924072822">お電話でご相談（092-407-2822）→</a><br><a class="go" href="#corporate" data-tabjump="corp">土地情報をフォームで送る →</a></div>
@@ -1051,7 +1067,7 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
         <dl>
           <div><dt>建設業許可</dt><dd>福岡県知事（特-3）第73084号</dd></div>
           <div><dt>宅地建物取引業</dt><dd>福岡県知事（3）第16710号</dd></div>
-            <!-- ★要確認：f-build.co.jp の会社概要は「福岡県知事（3）第16710号」。本LPの旧版は「（4）」だった。更新回数のどちらが正か中野さんに確認してから確定する -->
+            <!-- ★要確認（2026-09-02 原本照合）：受領仕様書 FukuokaBuild_YM_LP_Design_Spec_20260714.docx は「福岡県知事（4）第16710号」、本番サイト f-build.co.jp/company/ は「福岡県知事（3）第16710号」で食い違う。免許番号は同一・更新回数のみ相違。公開中の自社サイト表記に合わせて（3）を採用しているが、どちらが最新かを中野さんに確認して確定する -->
         </dl>
       </div>
       <div class="ft-col">
