@@ -293,13 +293,6 @@ section.band{background:var(--band)}
 .case p{font-size:13.5px;color:var(--stone)}
 .case-note{text-align:center;font-size:12.5px;color:var(--stone);margin-top:22px}
 
-/* ── 2026-09-14 施工例（3階建／5階建）本部承認写真 ── */
-.case-grid.case-grid-2{grid-template-columns:repeat(2,1fr)}
-.case .img.case-photo{aspect-ratio:16/10;background:var(--concrete);padding:0}
-.case .img.case-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.case .case-credit{margin-top:10px;font-size:12.5px;color:var(--stone);line-height:1.7}
-@media (max-width:620px){.case-grid.case-grid-2{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto}}
-
 /* ---------- menu ---------- */
 /* 2026-08-28 カンプ準拠。カンプ実測: カード388x298・gap17・カード内は中央揃え／
    バッジは金 #E1C06F（149x26）／タイトル明朝26px／説明16px／
@@ -979,50 +972,6 @@ header .hd{min-height:88px}
       <div class="reason"><div class="rn">04</div><h3>完成後</h3><p>建物・間取り・事業概要を、福岡ビルドの施工実績としてご紹介します。</p></div>
     </div>
     <p class="compare-note rv" style="margin-top:18px">※本セクションの写真・物件名・所在地の掲載範囲は、施主様のご承諾を得たうえで公開します。<!-- 要確認：着工日／物件名／所在地の表示範囲／写真使用許諾 --></p>
-  </div>
-</section>
-
-<!-- ================= 施工例（3階建／5階建）=================
-     2026-09-14 追加：ユーミーマンション本部（橋本明美様・Cybozu 2026/9/14）から
-     掲載承認を得た全国施工例写真。3階建・5階建それぞれの外観を1点ずつ掲載。
-     ★全国ブランドの施工例であり福岡ビルドの施工物件ではない旨のクレジット・注記は
-       hv-credit / hv-note と同じ表記ルールを維持すること（絶対に外さない）。 -->
-<section class="blk">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">施工例</span>
-      <h2 class="sec-title"><span class="nb">ユーミーマンション</span> <span class="nb">全国施工例。</span></h2>
-      <p class="lead">土地の規模・形状に応じて、3階建・5階建など複数のプランをご用意しています。ここでは全国のユーミーマンションから、3階建・5階建それぞれの外観例をご紹介します。</p>
-    </div>
-    <div class="case-grid case-grid-2 rv">
-      <div class="case">
-        <div class="img case-photo">
-          <img src="../img/mansion-3f-01.jpg"
-               alt="ユーミーマンション 3階建て 全国施工例 外観"
-               width="800" height="500" loading="lazy" decoding="async">
-        </div>
-        <div class="bd">
-          <div class="tag">3階建てプラン</div>
-          <h3>低層・小規模地向けの3階建て</h3>
-          <p class="case-credit">ユーミーマンション施工例<span class="hv-credit">本部提供写真</span><br>
-            <span class="hv-note">※全国ブランドの施工例であり、福岡ビルドの施工物件ではありません。</span></p>
-        </div>
-      </div>
-      <div class="case">
-        <div class="img case-photo">
-          <img src="../img/mansion-5f-01.jpg"
-               alt="ユーミーマンション 5階建て 全国施工例 外観"
-               width="800" height="500" loading="lazy" decoding="async">
-        </div>
-        <div class="bd">
-          <div class="tag">5階建てプラン</div>
-          <h3>収益性を高めやすい5階建て</h3>
-          <p class="case-credit">ユーミーマンション施工例<span class="hv-credit">本部提供写真</span><br>
-            <span class="hv-note">※全国ブランドの施工例であり、福岡ビルドの施工物件ではありません。</span></p>
-        </div>
-      </div>
-    </div>
-    <p class="case-note rv">※掲載写真はユーミーマンション本部が掲載を承認した全国のユーミーマンション施工例です。土地条件・法規制により建築可能な階数・規模は異なります。</p>
   </div>
 </section>
 
