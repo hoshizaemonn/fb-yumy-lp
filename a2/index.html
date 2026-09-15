@@ -732,6 +732,13 @@ header .hd{min-height:88px}
 .hv-credit{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:2px;
   background:#F2F5F9;border:1px solid #DCE4EC;color:#5B7186;
   font-size:10.5px;letter-spacing:.04em;line-height:1.5;vertical-align:1px}
+
+/* ===== 2026-09-15: ヘッダーロゴを1枚の合成画像（Y&M×福岡ビルド＋事業者名キャプション込み）に統一
+   星崎さん提供画像（brand-lockup-combined.png）を採用。旧・個別ロゴ2枚＋テキストの構成は廃止。 */
+.brand-combined{display:inline-flex;align-items:center}
+.brand-combined .bl-combined{height:34px;width:auto;display:block}
+@media (max-width:620px){ .brand-combined .bl-combined{height:26px} }
+@media (max-width:374px){ .brand-combined .bl-combined{height:23px} }
 </style>
 <link rel="canonical" href="https://fb-home.jp/">
 <meta property="og:type" content="website">
@@ -749,15 +756,9 @@ header .hd{min-height:88px}
 <!-- ================= HEADER ================= -->
 <header>
   <div class="wrap hd">
-    <a class="brand" href="#" data-totop>
-      <span class="bl-row">
-        <img class="bl-ym" src="../img/ym-logo.png" srcset="../img/ym-logo.png 1x, ../img/ym-logo@2x.png 2x" alt="ユーミーマンション">
-        <span class="bl-x" aria-hidden="true">×</span>
-        <span class="bl-fb">
-          <img src="../img/fukuoka-build-logo.png" alt="福岡ビルド株式会社">
-        </span>
-      </span>
-      <span class="bl-cap">ユーミーマンション 福岡県正規事業者</span>
+    <a class="brand brand-combined" href="#" data-totop>
+      <img class="bl-combined" src="../img/brand-lockup-combined.png"
+           alt="ユーミーマンション × 福岡ビルド株式会社 福岡県正規事業者">
     </a>
     <div class="hd-cta">
       <a class="hd-tel" href="tel:0924072822">
