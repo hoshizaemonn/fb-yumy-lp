@@ -604,7 +604,7 @@ footer{background:var(--ink);color:#C6D0D6;padding:56px 0 120px;font-size:13.5px
 .brand .bl-ym{height:26px}
 .brand .bl-x{font-size:13px;color:#8FA6BC;font-weight:400;line-height:1;flex:0 0 auto}
 .brand .bl-fb{display:flex;align-items:center;line-height:1;flex:0 0 auto}
-.brand .bl-fb img{height:30px;width:auto;align-self:center;flex:0 0 auto}
+.brand .bl-fb img{height:50px;width:auto;align-self:center;flex:0 0 auto}
 .brand .bl-cap{font-size:9.5px;letter-spacing:.01em;color:#5B7186;white-space:nowrap;line-height:1.2}
 header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;padding-bottom:8px}
 @media (max-width:620px){
@@ -624,7 +624,8 @@ header .hd{height:auto;min-height:72px;align-items:center;padding-top:8px;paddin
 /* 621〜780px でヘッダーのロゴと電話番号のすき間が10pxしか無く際どいため、ロゴを少し縮める */
 @media (max-width:780px){
   .brand .bl-ym{height:22px}
-  .brand .bl-fb img{height:24px}
+  /* 2026-09-15: 星崎さん指示により新ロゴを原寸相当(50px)で表示 */
+  .brand .bl-fb img{height:50px}
   .brand{gap:7px}
 }
 
@@ -683,7 +684,8 @@ header .hd{min-height:88px}
 @media (max-width:620px){
   /* スマホでも福岡ビルドの社名が読める大きさを確保する（提案書の指示） */
   .brand .bl-ym{height:20px}
-  .brand .bl-fb img{height:26px}
+  /* 2026-09-15: 星崎さん指示により、下のキャプション幅に近づくよう新ロゴを原寸相当(50px)で表示 */
+  .brand .bl-fb img{height:50px}
   .brand .bl-row{gap:7px}
   .brand .bl-cap{font-size:9.5px;letter-spacing:0}
   header .hd{min-height:80px}
